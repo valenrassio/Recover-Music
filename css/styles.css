@@ -333,7 +333,7 @@ a:where(:hover) { color: var(--accent); }
 /* --- Rider --------------------------------------------------------------- */
 
 .rider { padding-top: 90px; padding-bottom: 90px; display: flex; flex-wrap: wrap; gap: 48px; }
-.rider__intro { flex: 1 1 320px; display: flex; flex-direction: column; gap: 18px; }
+.rider__intro { flex: 1 1 280px; display: flex; flex-direction: column; gap: 18px; }
 .rider__eyebrow { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: var(--gray); }
 .rider .h2 { font-size: clamp(36px, 4.6vw, 64px); line-height: 0.95; }
 
@@ -350,7 +350,7 @@ a:where(:hover) { color: var(--accent); }
 .rider__list li::before { content: "→ "; color: var(--accent); font-weight: 700; }
 
 .inputs {
-  flex: 1.4 1 520px;
+  flex: 2.2 1 560px;
   align-self: flex-start;
   min-width: 0;
   border: 2px solid var(--bg);
@@ -368,29 +368,73 @@ a:where(:hover) { color: var(--accent); }
   letter-spacing: 0.14em;
 }
 .inputs summary::-webkit-details-marker { display: none; }
-.inputs__scroll { overflow-x: auto; border-top: 2px solid var(--bg); }
+.inputs__scroll { overflow-x: auto; }
 
-.inputs table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; }
-.inputs table + table { border-top: 2px solid var(--bg); }
-.inputs caption {
-  padding: 16px 22px 6px;
-  text-align: left;
-  font-size: 12px;
+/* Pestañas INPUT / OUTPUT (js/rider.js muestra una tabla a la vez) */
+.rider-tabs { display: flex; border-top: 2px solid var(--bg); border-bottom: 2px solid var(--bg); }
+.rider-tab {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--bg);
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--accent);
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
 }
-.inputs thead tr { text-align: left; font-size: 12px; letter-spacing: 0.12em; }
-.inputs th { padding: 12px 8px; }
-.inputs td { padding: 11px 8px; vertical-align: top; }
-/* Canal y observaciones se marcan con clase porque las celdas unidas (rowspan) corren las posiciones */
-.inputs .ch { padding-left: 22px; padding-right: 22px; }
+.rider-tab + .rider-tab { border-left: 2px solid var(--bg); }
+.rider-tab span { font-size: 11px; font-weight: 400; letter-spacing: 0.08em; color: var(--gray); }
+.rider-tab:hover { background: var(--ink); }
+.rider-tab[aria-selected="true"] { background: var(--bg); color: var(--ink); }
+.rider-tab[aria-selected="true"] span { color: var(--accent); }
+
+.inputs table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
+.inputs thead tr { text-align: left; font-size: 11px; letter-spacing: 0.12em; color: var(--gray); }
+.inputs th { padding: 12px 8px 8px; font-weight: 700; }
+.inputs td { padding: 9px 8px; vertical-align: top; }
+.inputs .ch { width: 1%; padding-left: 22px; padding-right: 14px; }
 .inputs .obs { padding-right: 22px; }
 .inputs td.ch { font-weight: 700; color: var(--accent); }
-.inputs td.obs { color: var(--gray); }
+.inputs td.uso { font-weight: 700; }
+.inputs td.tipo, .inputs td.int, .inputs td.pie { white-space: nowrap; }
+.inputs td.obs, .inputs td.na { color: var(--gray); }
 .inputs tbody tr { border-top: 1px solid var(--line-light); }
-.inputs td[rowspan] { border-bottom: 1px solid var(--line-light); }
-.inputs tbody tr.cont { border-top-style: dashed; }
+/* Segundo canal del mismo músico: no repite nombre ni datos compartidos */
+.inputs tbody tr.cont { border-top: 1px dashed var(--line-light); }
+.inputs td.rep { visibility: hidden; }
+
+/* Celular: cada canal es una ficha corta, sin tabla que se desliza */
+@media (max-width: 640px) {
+  .inputs thead { display: none; }
+  .inputs table, .inputs tbody { display: block; }
+  .inputs tbody tr {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    grid-template-areas: "ch uso int" "ch tipo tipo" "ch obs obs";
+    column-gap: 8px;
+    row-gap: 2px;
+    padding: 10px 16px 10px 0;
+  }
+  .inputs tbody tr.cont { border-top-style: solid; }
+  .inputs td { display: block; padding: 0; white-space: normal !important; }
+  .inputs td.rep { visibility: visible; }
+  .inputs td:empty, .inputs td.na { display: none; }
+  .inputs td.ch { grid-area: ch; padding-left: 16px; padding-right: 0; width: auto; }
+  .inputs td.uso { grid-area: uso; font-size: 14px; }
+  .inputs td.int { grid-area: int; text-align: right; font-size: 12px; color: var(--gray); white-space: nowrap !important; }
+  .inputs td.tipo { grid-area: tipo; font-size: 12px; }
+  .inputs td.pie { display: none; }
+  .inputs td.tipo[data-pie]::after { content: " · " attr(data-pie); color: var(--gray); }
+  .inputs td.obs { grid-area: obs; padding: 2px 0 0; font-size: 12px; color: var(--accent); }
+  .rider-tab { flex-direction: column; align-items: center; gap: 2px; padding: 12px 8px; }
+}
 
 /* --- Contratar (ticket) -------------------------------------------------- */
 

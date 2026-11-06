@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=7">
+<link rel="stylesheet" href="css/styles.css?v=8">
 <link rel="stylesheet" href="css/motion.css?v=2">
 <link rel="stylesheet" href="css/glass.css?v=2">
 <link rel="stylesheet" href="css/countdown.css?v=4">
@@ -21,6 +21,7 @@
 <script src="js/animaciones.js?v=2" defer></script>
 <script src="js/countdown.js?v=5" defer></script>
 <script src="js/contenido.js?v=5" defer></script>
+<script src="js/rider.js?v=8" defer></script>
 </head>
 <body>
 <div class="page">
@@ -252,38 +253,42 @@
     </div>
     <details class="inputs" data-reveal style="--i:1">
       <summary>VER INPUT Y OUTPUT LIST <span class="accent">+</span></summary>
-      <div class="inputs__scroll">
+      <div class="rider-tabs" role="tablist" aria-label="Listas técnicas" data-tabs>
+        <button class="rider-tab" type="button" role="tab" id="tab-in" aria-controls="panel-in" aria-selected="true">INPUT <span>10 canales</span></button>
+        <button class="rider-tab" type="button" role="tab" id="tab-out" aria-controls="panel-out" aria-selected="false">OUTPUT <span>11 envíos</span></button>
+      </div>
+      <div class="inputs__scroll" id="panel-in" role="tabpanel" aria-labelledby="tab-in">
         <table>
-          <caption>INPUT LIST</caption>
-          <thead><tr><th class="ch">CANAL</th><th>INTEGRANTE</th><th>USO · INSTRUMENTO</th><th>TIPO</th><th>PIE</th><th class="obs">OBSERVACIONES</th></tr></thead>
+          <thead><tr><th class="ch">CANAL</th><th>INTEGRANTE</th><th>USO</th><th>TIPO</th><th>PIE</th><th class="obs">OBSERVACIONES</th></tr></thead>
           <tbody>
-            <tr><td class="ch">01</td><td>Martina Ferreyra</td><td>Vocalista</td><td>Beta 58</td><td>Pie de jirafa alto</td><td class="obs"></td></tr>
-            <tr><td class="ch">02</td><td>Eliana Sortino</td><td>Vocalista</td><td>Beta 58</td><td>Pie de jirafa alto</td><td class="obs"></td></tr>
-            <tr><td class="ch">03</td><td>Pablo Pratti</td><td>Teclado</td><td>DI</td><td>N/A</td><td class="obs">Cable provisto por el músico</td></tr>
-            <tr><td class="ch">04</td><td rowspan="2">Mariano Artola</td><td>Coros</td><td>Shure SM58</td><td>Pie de jirafa alto</td><td class="obs" rowspan="2"></td></tr>
-            <tr class="cont"><td class="ch">05</td><td>Guitarra eléctrica</td><td>DI · entrada XLR</td><td></td></tr>
-            <tr><td class="ch">06</td><td>Bautista Pourtalé</td><td>Guitarra eléctrica</td><td>Shure SM57</td><td>N/A</td><td class="obs"></td></tr>
-            <tr><td class="ch">07</td><td>Rodrigo Suárez</td><td>Bajo eléctrico</td><td>DI</td><td>N/A</td><td class="obs">Cable plug ¼" provisto por el músico</td></tr>
-            <tr><td class="ch">08</td><td rowspan="2">Diego Sánchez</td><td>Batería electrónica (L)</td><td>DI</td><td>N/A</td><td class="obs" rowspan="2">Se necesita 220 V</td></tr>
-            <tr class="cont"><td class="ch">09</td><td>Batería electrónica (R)</td><td>DI</td><td>N/A</td></tr>
-            <tr><td class="ch">10</td><td>Laura Lencina</td><td>Piano</td><td>DI</td><td>N/A</td><td class="obs"></td></tr>
+            <tr><td class="ch">01</td><td class="int">Martina Ferreyra</td><td class="uso">Vocalista</td><td class="tipo" data-label="TIPO" data-pie="Pie de jirafa alto">Beta 58</td><td class="pie" data-label="PIE">Pie de jirafa alto</td><td class="obs"></td></tr>
+            <tr><td class="ch">02</td><td class="int">Eliana Sortino</td><td class="uso">Vocalista</td><td class="tipo" data-label="TIPO" data-pie="Pie de jirafa alto">Beta 58</td><td class="pie" data-label="PIE">Pie de jirafa alto</td><td class="obs"></td></tr>
+            <tr><td class="ch">03</td><td class="int">Pablo Pratti</td><td class="uso">Teclado</td><td class="tipo" data-label="TIPO">DI</td><td class="pie na" data-label="PIE">N/A</td><td class="obs">Cable provisto por el músico</td></tr>
+            <tr><td class="ch">04</td><td class="int">Mariano Artola</td><td class="uso">Coros</td><td class="tipo" data-label="TIPO" data-pie="Pie de jirafa alto">Shure SM58</td><td class="pie" data-label="PIE">Pie de jirafa alto</td><td class="obs"></td></tr>
+            <tr class="cont"><td class="ch">05</td><td class="int rep">Mariano Artola</td><td class="uso">Guitarra eléctrica</td><td class="tipo" data-label="TIPO">DI · entrada XLR</td><td class="pie" data-label="PIE"></td><td class="obs"></td></tr>
+            <tr><td class="ch">06</td><td class="int">Bautista Pourtalé</td><td class="uso">Guitarra eléctrica</td><td class="tipo" data-label="TIPO">Shure SM57</td><td class="pie na" data-label="PIE">N/A</td><td class="obs"></td></tr>
+            <tr><td class="ch">07</td><td class="int">Rodrigo Suárez</td><td class="uso">Bajo eléctrico</td><td class="tipo" data-label="TIPO">DI</td><td class="pie na" data-label="PIE">N/A</td><td class="obs">Cable plug ¼" provisto por el músico</td></tr>
+            <tr><td class="ch">08</td><td class="int">Diego Sánchez</td><td class="uso">Batería electrónica (L)</td><td class="tipo" data-label="TIPO">DI</td><td class="pie na" data-label="PIE">N/A</td><td class="obs">Se necesita 220 V</td></tr>
+            <tr class="cont"><td class="ch">09</td><td class="int rep">Diego Sánchez</td><td class="uso">Batería electrónica (R)</td><td class="tipo" data-label="TIPO">DI</td><td class="pie na" data-label="PIE">N/A</td><td class="obs rep">Se necesita 220 V</td></tr>
+            <tr><td class="ch">10</td><td class="int">Laura Lencina</td><td class="uso">Piano</td><td class="tipo" data-label="TIPO">DI</td><td class="pie na" data-label="PIE">N/A</td><td class="obs"></td></tr>
           </tbody>
         </table>
+      </div>
+      <div class="inputs__scroll" id="panel-out" role="tabpanel" aria-labelledby="tab-out">
         <table>
-          <caption>OUTPUT LIST · MEZCLA</caption>
-          <thead><tr><th class="ch">CANAL</th><th>INTEGRANTE</th><th>USO · INSTRUMENTO</th><th class="obs">TIPO</th></tr></thead>
+          <thead><tr><th class="ch">CANAL</th><th>INTEGRANTE</th><th>USO</th><th class="obs">MONITOREO</th></tr></thead>
           <tbody>
-            <tr><td class="ch">01</td><td>Martina Ferreyra</td><td>Vocalista</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">02</td><td>Eliana Sortino</td><td>Vocalista</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">03</td><td>Pablo Pratti</td><td>Teclado</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">04</td><td rowspan="2">Mariano Artola</td><td>Coros</td><td class="obs" rowspan="2">Piso</td></tr>
-            <tr class="cont"><td class="ch">05</td><td>Guitarra eléctrica</td></tr>
-            <tr><td class="ch">06</td><td>Bautista Pourtalé</td><td>Guitarra eléctrica</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">07</td><td>Rodrigo Suárez</td><td>Bajo eléctrico</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">08</td><td rowspan="2">Diego Sánchez</td><td>Batería electrónica (L)</td><td class="obs" rowspan="2">Sistema in-ear personal o monitoreo de piso plano</td></tr>
-            <tr class="cont"><td class="ch">09</td><td>Batería electrónica (R)</td></tr>
-            <tr><td class="ch">10</td><td>Laura Lencina</td><td>Piano eléctrico</td><td class="obs">Piso</td></tr>
-            <tr><td class="ch">11</td><td></td><td>Escenario</td><td class="obs">Sidefill</td></tr>
+            <tr><td class="ch">01</td><td class="int">Martina Ferreyra</td><td class="uso">Vocalista</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">02</td><td class="int">Eliana Sortino</td><td class="uso">Vocalista</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">03</td><td class="int">Pablo Pratti</td><td class="uso">Teclado</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">04</td><td class="int">Mariano Artola</td><td class="uso">Coros</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr class="cont"><td class="ch">05</td><td class="int rep">Mariano Artola</td><td class="uso">Guitarra eléctrica</td><td class="tipo rep" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">06</td><td class="int">Bautista Pourtalé</td><td class="uso">Guitarra eléctrica</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">07</td><td class="int">Rodrigo Suárez</td><td class="uso">Bajo eléctrico</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">08</td><td class="int">Diego Sánchez</td><td class="uso">Batería electrónica (L)</td><td class="tipo" data-label="TIPO">In-ear personal o piso plano</td></tr>
+            <tr class="cont"><td class="ch">09</td><td class="int rep">Diego Sánchez</td><td class="uso">Batería electrónica (R)</td><td class="tipo rep" data-label="TIPO">In-ear personal o piso plano</td></tr>
+            <tr><td class="ch">10</td><td class="int">Laura Lencina</td><td class="uso">Piano eléctrico</td><td class="tipo" data-label="TIPO">Piso</td></tr>
+            <tr><td class="ch">11</td><td class="int"></td><td class="uso">Escenario</td><td class="tipo" data-label="TIPO">Sidefill</td></tr>
           </tbody>
         </table>
       </div>
