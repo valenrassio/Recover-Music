@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Recover Music — próxima fecha (cuenta regresiva)
+   ========================================================================== */
+
+[hidden] { display: none !important; }
+
+.next-show__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 40px 64px;
+}
+
+.next-show__info { display: flex; flex-direction: column; gap: 18px; }
+.next-show__eyebrow { color: var(--accent); }
+.next-show__text { margin: 0; max-width: 420px; font-size: 15px; line-height: 1.7; color: var(--text-soft); }
+.next-show__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+.countdown {
+  display: flex;
+  padding: 28px 12px;
+}
+.countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0 26px;
+}
+.countdown__unit + .countdown__unit { border-left: 1px solid rgba(255, 255, 255, .14); }
+
+.countdown__num {
+  display: block;
+  min-width: 2ch;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: .85;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.countdown__lbl { font-size: 11px; font-weight: 700; letter-spacing: .2em; color: var(--muted); }
+
+/* Cada vez que cambia un número, cae suavemente desde arriba */
+@keyframes tick { from { opacity: .2; translate: 0 -10px; } to { opacity: 1; translate: 0 0; } }
+.countdown__num.is-tick { animation: tick .45s cubic-bezier(.2, .7, .2, 1); }
+
+.countdown__today {
+  margin: 0;
+  padding: 10px 24px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: .9;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .next-show__inner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .next-show__inner > * { min-width: 0; }
+  .countdown { justify-content: space-between; padding: 20px 4px; }
+  .countdown__unit { flex: 1; min-width: 0; padding: 0 10px; gap: 8px; }
+  .countdown__num { font-size: clamp(30px, 10.5vw, 52px); }
+  .countdown__lbl { font-size: 10px; letter-spacing: .14em; }
+  .next-show__actions .btn { flex: 1 1 100%; text-align: center; box-sizing: border-box; }
+}

@@ -12,10 +12,12 @@
 <link rel="stylesheet" href="css/styles.css?v=2">
 <link rel="stylesheet" href="css/motion.css?v=2">
 <link rel="stylesheet" href="css/glass.css?v=2">
+<link rel="stylesheet" href="css/countdown.css?v=4">
 <script>document.documentElement.classList.add('js')</script>
 <script src="js/menu.js?v=2" defer></script>
 <script src="js/pedido.js?v=2" defer></script>
 <script src="js/animaciones.js?v=2" defer></script>
+<script src="js/countdown.js?v=3" defer></script>
 </head>
 <body>
 <div class="page">
@@ -30,6 +32,7 @@
     <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     <nav id="menu" class="site-nav" aria-label="Principal">
       <a href="#banda">LA BANDA</a>
+      <a href="#proxima-fecha">PRÓXIMA FECHA</a>
       <a href="#repertorio">REPERTORIO</a>
       <a href="#formatos">FORMATOS</a>
       <a href="#rider">RIDER</a>
@@ -73,6 +76,30 @@
     <span>EN VIVO  ●  LA PLATA  ●  DE LOS ’70 A HOY  ●  NACIONAL E INTERNACIONAL  ●  BARES, FIESTAS Y EVENTOS  ●  </span>
   </div>
 </div>
+
+<!-- Próxima fecha: para cambiarla, editá la fecha/hora de data-countdown y el texto de la etiqueta. -->
+<section id="proxima-fecha" class="has-glow" aria-labelledby="proxima-fecha-t">
+  <span class="glow" aria-hidden="true" style="--size:520px; right:6%; top:-60px"></span>
+  <div class="container section next-show__inner">
+    <div class="next-show__info" data-reveal>
+      <p class="label next-show__eyebrow">PRÓXIMA FECHA · DOMINGO 15 DE NOVIEMBRE</p>
+      <h2 id="proxima-fecha-t" class="h2">Nos vemos en vivo.</h2>
+      <p class="next-show__text">Falta poco para el próximo show. El lugar y el horario los anunciamos en Instagram.</p>
+      <div class="next-show__actions">
+        <a class="btn btn--primary" href="https://www.instagram.com/retromusic_lp/">VER DETALLES EN INSTAGRAM</a>
+      </div>
+    </div>
+    <div data-reveal style="--i:1">
+      <div class="glass countdown" data-countdown="2026-11-15T21:00:00-03:00" role="timer" aria-label="Tiempo que falta para el próximo show">
+        <div class="countdown__unit"><span class="countdown__num" data-unit="d">--</span><span class="countdown__lbl">DÍAS</span></div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="h">--</span><span class="countdown__lbl">HORAS</span></div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="m">--</span><span class="countdown__lbl">MIN</span></div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="s">--</span><span class="countdown__lbl">SEG</span></div>
+      </div>
+      <p class="glass countdown__today" data-today hidden>¡HOY TOCAMOS!</p>
+    </div>
+  </div>
+</section>
 
 <section id="banda" class="section--light has-glow">
   <span class="glow" aria-hidden="true" style="--size:560px; left:22%; bottom:-260px; --tint:rgba(255,90,54,.45)"></span>
