@@ -370,15 +370,27 @@ a:where(:hover) { color: var(--accent); }
 .inputs summary::-webkit-details-marker { display: none; }
 .inputs__scroll { overflow-x: auto; border-top: 2px solid var(--bg); }
 
-.inputs table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+.inputs table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; }
+.inputs table + table { border-top: 2px solid var(--bg); }
+.inputs caption {
+  padding: 16px 22px 6px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
 .inputs thead tr { text-align: left; font-size: 12px; letter-spacing: 0.12em; }
 .inputs th { padding: 12px 8px; }
-.inputs td { padding: 11px 8px; }
-.inputs th:first-child, .inputs td:first-child { padding-left: 22px; padding-right: 22px; }
-.inputs th:last-child, .inputs td:last-child { padding-right: 22px; }
-.inputs td:first-child { font-weight: 700; color: var(--accent); }
-.inputs td:last-child { color: var(--gray); }
+.inputs td { padding: 11px 8px; vertical-align: top; }
+/* Canal y observaciones se marcan con clase porque las celdas unidas (rowspan) corren las posiciones */
+.inputs .ch { padding-left: 22px; padding-right: 22px; }
+.inputs .obs { padding-right: 22px; }
+.inputs td.ch { font-weight: 700; color: var(--accent); }
+.inputs td.obs { color: var(--gray); }
 .inputs tbody tr { border-top: 1px solid var(--line-light); }
+.inputs td[rowspan] { border-bottom: 1px solid var(--line-light); }
+.inputs tbody tr.cont { border-top-style: dashed; }
 
 /* --- Contratar (ticket) -------------------------------------------------- */
 
