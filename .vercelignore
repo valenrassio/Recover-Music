@@ -1,0 +1,6 @@
+# Archivos del repositorio que no forman parte de la página publicada
+google-sheets/
+servidor.ps1
+ABRIR SITIO.bat
+*.pdf
+.playwright-mcp/
