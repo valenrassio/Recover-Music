@@ -10,8 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/glass.css">
+<script>document.documentElement.classList.add('js')</script>
 <script src="js/menu.js" defer></script>
 <script src="js/pedido.js" defer></script>
+<script src="js/animaciones.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -34,7 +38,8 @@
   </div>
 </header>
 
-<section id="inicio" class="hero">
+<section id="inicio" class="hero has-glow">
+  <span class="glow" aria-hidden="true" style="--size:420px; left:4%; top:520px"></span>
   <div class="container hero__intro">
     <h1 class="hero-title" aria-label="Recover Music">
       <span class="stencil" aria-hidden="true">RECOVER</span>
@@ -47,27 +52,43 @@
         <a class="btn btn--primary" href="#contratar">CONTRATAR</a>
         <a class="btn btn--ghost" href="https://www.youtube.com/@retrodisc-w3g">▶ VER EN VIVO</a>
       </div>
+      <div class="glass hero__eq eq" data-eq aria-hidden="true">
+        <div class="eq__row"></div>
+        <div class="eq__axis"></div>
+        <div class="eq__row eq__row--ref"></div>
+        <div class="eq__prog"><b></b></div>
+        <div class="eq__meta"><span class="eq__live">● EN VIVO</span><span>LA PLATA</span></div>
+      </div>
     </div>
   </div>
   <figure class="hero__photo">
     <img src="banda.jpg" alt="Los integrantes de Recover Music juntos sobre el escenario de un bar">
-    <figcaption>LA BANDA COMPLETA · EN VIVO</figcaption>
+    <figcaption class="glass glass--pill">LA BANDA COMPLETA · EN VIVO</figcaption>
   </figure>
 </section>
 
-<section id="banda" class="section--light">
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>EN VIVO  ●  LA PLATA  ●  DE LOS ’70 A HOY  ●  NACIONAL E INTERNACIONAL  ●  BARES, FIESTAS Y EVENTOS  ●  </span>
+    <span>EN VIVO  ●  LA PLATA  ●  DE LOS ’70 A HOY  ●  NACIONAL E INTERNACIONAL  ●  BARES, FIESTAS Y EVENTOS  ●  </span>
+  </div>
+</div>
+
+<section id="banda" class="section--light has-glow">
+  <span class="glow" aria-hidden="true" style="--size:560px; left:22%; bottom:-260px; --tint:rgba(255,90,54,.45)"></span>
+  <span class="glow" aria-hidden="true" style="--size:420px; right:-120px; top:-80px; --tint:rgba(255,170,120,.5); --speed:20s"></span>
   <div class="container section about">
-    <p class="about__manifesto">Somos músicos que van <span class="accent">de un género a otro</span> sin perder la energía. Elegimos los clásicos que todos cantan y los tocamos para que sigan vivos.</p>
-    <div class="goals">
-      <div class="goal">
+    <p class="about__manifesto" data-reveal>Somos músicos que van <span class="accent">de un género a otro</span> sin perder la energía. Elegimos los clásicos que todos cantan y los tocamos para que sigan vivos.</p>
+    <div class="goals" data-stagger>
+      <div class="glass glass--light goal">
         <span class="goal__num">01</span>
         <p class="goal__text">Crecer como profesionales en el ámbito musical.</p>
       </div>
-      <div class="goal">
+      <div class="glass glass--light goal">
         <span class="goal__num">02</span>
         <p class="goal__text">Conectar con el público presente, adaptándonos a cada evento.</p>
       </div>
-      <div class="goal">
+      <div class="glass glass--light goal">
         <span class="goal__num">03</span>
         <p class="goal__text">Que la música siga propagándose: mantener viva la cultura musical en las viejas y nuevas generaciones.</p>
       </div>
@@ -76,13 +97,13 @@
 </section>
 
 <section id="repertorio" class="container section">
-  <div class="section-head">
+  <div class="section-head" data-reveal>
     <h2 class="h2">Repertorio</h2>
     <p class="section-head__text">Una muestra de lo que suena: clásicos de los ’70 a hoy, internacionales y nacionales. El setlist final se arma según tu evento.</p>
   </div>
   <div class="sides">
 
-    <div class="side side--wide">
+    <div class="side side--wide" data-reveal>
       <div class="side-head">
         <span class="side-head__title">Lado A · Internacional</span>
         <span class="label side-head__count">10 TEMAS</span>
@@ -101,7 +122,7 @@
       </ol>
     </div>
 
-    <div class="side">
+    <div class="side" data-reveal style="--i:1">
       <div class="side-head">
         <span class="side-head__title">Lado B · Nacional</span>
         <span class="label side-head__count">4 TEMAS + LO QUE PIDA LA NOCHE</span>
@@ -113,7 +134,7 @@
         <li class="track"><span class="track__n">14</span><span class="track__info"><span class="track__title">Tirá para arriba</span><span class="track__artist">MIGUEL MATEOS</span></span><span class="track__time">5:00</span></li>
       </ol>
 
-      <a class="request" href="#contratar">
+      <a class="glass request" href="#contratar">
         <span class="request__body">
           <span class="request__title">¿Hay un tema que no puede faltar?</span>
           <span class="request__sub">Pedilo cuando nos contrates y lo sumamos al setlist.</span>
@@ -125,24 +146,26 @@
   </div>
 </section>
 
-<section id="formatos" class="formats-section">
+<section id="formatos" class="formats-section has-glow">
+  <span class="glow" aria-hidden="true" style="--size:600px; right:-180px; top:40px"></span>
+  <span class="glow" aria-hidden="true" style="--size:380px; right:28%; bottom:-120px; --tint:rgba(255,90,54,.4); --speed:22s"></span>
   <div class="container section formats-layout">
-    <div class="formats-intro">
+    <div class="formats-intro" data-reveal>
       <h2 class="h2">Del trío a la banda completa</h2>
       <p>Armamos la formación según el evento, social o empresarial. Cuando el repertorio lo pide, sumamos músicos sesionistas, por ejemplo vientos.</p>
     </div>
-    <div class="formats">
-      <div class="format">
+    <div class="formats" data-stagger>
+      <div class="glass format">
         <span class="format__name">Trío</span>
         <span class="format__dots" aria-hidden="true">●●●</span>
         <span class="format__use">BARES Y EVENTOS ÍNTIMOS</span>
       </div>
-      <div class="format">
+      <div class="glass format">
         <span class="format__name">Cuarteto</span>
         <span class="format__dots" aria-hidden="true">●●●●</span>
         <span class="format__use">FIESTAS Y CELEBRACIONES</span>
       </div>
-      <div class="format">
+      <div class="glass format">
         <span class="format__name">Banda completa</span>
         <span class="format__dots" aria-hidden="true">●●●●●●●●</span>
         <span class="format__use">GRANDES EVENTOS Y ESCENARIOS</span>
@@ -151,24 +174,27 @@
   </div>
 </section>
 
-<section class="container section" aria-labelledby="integrantes-t">
+<section class="has-glow" aria-labelledby="integrantes-t">
+  <span class="glow" aria-hidden="true" style="--size:520px; right:12%; top:-40px; --tint:rgba(255,90,54,.42)"></span>
+  <div class="container section">
   <div class="members-layout">
-    <h2 id="integrantes-t" class="h2">Quiénes tocan</h2>
-    <dl class="members">
-      <div class="member"><dt>Martina Ferreyra</dt><dd>VOZ</dd></div>
-      <div class="member"><dt>Eliana Sortino</dt><dd>VOZ</dd></div>
-      <div class="member"><dt>Mariano Artola</dt><dd>GUITARRA Y COROS</dd></div>
-      <div class="member"><dt>Bautista Pourtalé</dt><dd>GUITARRA</dd></div>
-      <div class="member"><dt>Laura Lencina</dt><dd>PIANO</dd></div>
-      <div class="member"><dt>Rodrigo Suárez</dt><dd>BAJO</dd></div>
-      <div class="member"><dt>Diego Sánchez</dt><dd>BATERÍA ELECTRÓNICA</dd></div>
+    <h2 id="integrantes-t" class="h2" data-reveal>Quiénes tocan</h2>
+    <dl class="members" data-stagger>
+      <div class="glass member"><dt>Martina Ferreyra</dt><dd>VOZ</dd></div>
+      <div class="glass member"><dt>Eliana Sortino</dt><dd>VOZ</dd></div>
+      <div class="glass member"><dt>Mariano Artola</dt><dd>GUITARRA Y COROS</dd></div>
+      <div class="glass member"><dt>Bautista Pourtalé</dt><dd>GUITARRA</dd></div>
+      <div class="glass member"><dt>Laura Lencina</dt><dd>PIANO</dd></div>
+      <div class="glass member"><dt>Rodrigo Suárez</dt><dd>BAJO</dd></div>
+      <div class="glass member"><dt>Diego Sánchez</dt><dd>BATERÍA ELECTRÓNICA</dd></div>
     </dl>
+  </div>
   </div>
 </section>
 
 <section id="rider" class="section--light">
   <div class="container section rider">
-    <div class="rider__intro">
+    <div class="rider__intro" data-reveal>
       <p class="rider__eyebrow">PARA ORGANIZADORES</p>
       <h2 class="h2">Rider técnico</h2>
       <ul class="rider__list">
@@ -177,7 +203,7 @@
         <li>La banda no lleva operadores de sonido, luces ni video; si va alguno, se avisa antes.</li>
       </ul>
     </div>
-    <details class="inputs">
+    <details class="inputs" data-reveal style="--i:1">
       <summary>VER INPUT LIST COMPLETA <span class="accent">+</span></summary>
       <div class="inputs__scroll">
         <table>
@@ -199,7 +225,7 @@
 </section>
 
 <section id="contratar" class="container section">
-  <div class="ticket">
+  <div class="ticket" data-reveal>
     <div class="ticket__stub">
       <div class="ticket__head">
         <span class="label ticket__eyebrow">ENTRADA · ADMIT ONE</span>

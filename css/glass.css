@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Recover Music — cuadros "liquid glass"
+   El brillo sigue al mouse con las variables --mx / --my (js/animaciones.js).
+   ========================================================================== */
+
+.glass {
+  --edge: linear-gradient(135deg, rgba(255,255,255,.6), rgba(255,255,255,.05) 38%, rgba(255,255,255,0) 60%, rgba(255,90,54,.45));
+  position: relative;
+  isolation: isolate;
+  border-radius: 22px;
+  background: linear-gradient(150deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.04) 55%, rgba(255,255,255,.08) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 1px rgba(255,255,255,.06),
+    0 20px 44px -22px rgba(0,0,0,.75);
+  overflow: hidden;
+  transition: translate .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+}
+
+/* Brillo líquido que sigue al puntero */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(260px circle at var(--mx, 20%) var(--my, 0%), rgba(255,255,255,.2), transparent 65%);
+  pointer-events: none;
+}
+
+/* Borde que refleja la luz */
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--edge);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass:hover { translate: 0 -4px; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 1px rgba(255,255,255,.08), 0 28px 54px -24px rgba(0,0,0,.85); }
+
+/* Versión para las secciones claras */
+.glass--light {
+  --edge: linear-gradient(135deg, #FFFFFF, rgba(255,255,255,.2) 40%, rgba(255,255,255,0) 60%, rgba(255,90,54,.55));
+  background: linear-gradient(150deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.34) 60%, rgba(255,255,255,.5) 100%);
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 22px 44px -26px rgba(70, 40, 20, .45);
+}
+.glass--light::before { background: radial-gradient(260px circle at var(--mx, 20%) var(--my, 0%), rgba(255,255,255,.85), transparent 65%); }
+.glass--light:hover { box-shadow: inset 0 1px 0 #FFFFFF, 0 30px 56px -26px rgba(70, 40, 20, .55); }
+
+.glass--pill { border-radius: 999px; }
+.glass--pill:hover { translate: none; }
+
+/* --- Dónde se usa -------------------------------------------------------- */
+
+.hero__eq { padding: 20px 22px 16px; }
+
+.hero__photo figcaption.glass {
+  background: linear-gradient(150deg, rgba(13,13,15,.45), rgba(13,13,15,.2));
+  padding: 10px 18px;
+}
+
+.goals { gap: 18px; border-top: 0; }
+.goal.glass { padding: 26px 28px 30px; }
+
+.formats { gap: 14px; }
+.format.glass { padding: 24px 28px; border-bottom: 0; }
+
+.members { gap: 14px; }
+.member.glass { padding: 18px 22px; border-bottom: 0; }
+
+.request.glass { border: 0; }
+
+@media (max-width: 640px) {
+  .goal.glass, .format.glass { padding: 22px 20px; }
+  .member.glass { padding: 16px 18px; }
+  .request.glass { padding: 22px 20px; }
+}
+
+/* Navegadores sin desenfoque de fondo: un vidrio más opaco para que se lea igual */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgba(30, 30, 34, .92); }
+  .glass--light { background: rgba(255, 255, 255, .9); }
+}
