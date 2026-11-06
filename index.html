@@ -13,11 +13,14 @@
 <link rel="stylesheet" href="css/motion.css?v=2">
 <link rel="stylesheet" href="css/glass.css?v=2">
 <link rel="stylesheet" href="css/countdown.css?v=4">
+<link rel="stylesheet" href="css/sugerencias.css?v=5">
 <script>document.documentElement.classList.add('js')</script>
+<script src="js/config.js?v=5" defer></script>
 <script src="js/menu.js?v=2" defer></script>
 <script src="js/pedido.js?v=2" defer></script>
 <script src="js/animaciones.js?v=2" defer></script>
-<script src="js/countdown.js?v=3" defer></script>
+<script src="js/countdown.js?v=5" defer></script>
+<script src="js/contenido.js?v=5" defer></script>
 </head>
 <body>
 <div class="page">
@@ -77,16 +80,17 @@
   </div>
 </div>
 
-<!-- Próxima fecha: para cambiarla, editá la fecha/hora de data-countdown y el texto de la etiqueta. -->
+<!-- Próxima fecha. Con la planilla conectada (js/config.js) se toma de la solapa "Fechas";
+     esta fecha y estos textos quedan solo como respaldo. -->
 <section id="proxima-fecha" class="has-glow" aria-labelledby="proxima-fecha-t">
   <span class="glow" aria-hidden="true" style="--size:520px; right:6%; top:-60px"></span>
   <div class="container section next-show__inner">
     <div class="next-show__info" data-reveal>
-      <p class="label next-show__eyebrow">PRÓXIMA FECHA · DOMINGO 15 DE NOVIEMBRE · 17 H · PLAZA AZCUÉNAGA</p>
+      <p class="label next-show__eyebrow" data-show-eyebrow>PRÓXIMA FECHA · DOMINGO 15 DE NOVIEMBRE · 17 H · PLAZA AZCUÉNAGA</p>
       <h2 id="proxima-fecha-t" class="h2">Nos vemos en vivo.</h2>
-      <p class="next-show__text">Tocamos en vivo en la Plaza Azcuénaga. Vení temprano, traé a tus amigos y cantá con nosotros.</p>
+      <p class="next-show__text" data-show-text>Tocamos en vivo en la Plaza Azcuénaga. Vení temprano, traé a tus amigos y cantá con nosotros.</p>
       <div class="next-show__actions">
-        <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Plaza+Azc%C3%BAenaga+La+Plata">CÓMO LLEGAR →</a>
+        <a class="btn btn--primary" data-show-map href="https://www.google.com/maps/search/?api=1&amp;query=Plaza+Azc%C3%BAenaga+La+Plata">CÓMO LLEGAR →</a>
         <a class="btn btn--ghost" href="https://www.instagram.com/retromusic_lp/">INSTAGRAM</a>
       </div>
     </div>
@@ -134,9 +138,9 @@
     <div class="side side--wide" data-reveal>
       <div class="side-head">
         <span class="side-head__title">Lado A · Internacional</span>
-        <span class="label side-head__count">10 TEMAS</span>
+        <span class="label side-head__count" data-count="A">10 TEMAS</span>
       </div>
-      <ol class="tracklist">
+      <ol class="tracklist" data-lado="A">
         <li class="track"><span class="track__n">01</span><span class="track__info"><span class="track__title">Crazy Little Thing Called Love</span><span class="track__artist">QUEEN</span></span><span class="track__time">2:43</span></li>
         <li class="track"><span class="track__n">02</span><span class="track__info"><span class="track__title">The Best</span><span class="track__artist">TINA TURNER</span></span><span class="track__time">4:00</span></li>
         <li class="track"><span class="track__n">03</span><span class="track__info"><span class="track__title">Heart of Glass</span><span class="track__artist">BLONDIE</span></span><span class="track__time">3:30</span></li>
@@ -153,16 +157,30 @@
     <div class="side" data-reveal style="--i:1">
       <div class="side-head">
         <span class="side-head__title">Lado B · Nacional</span>
-        <span class="label side-head__count">4 TEMAS + LO QUE PIDA LA NOCHE</span>
+        <span class="label side-head__count" data-count="B" data-suffix=" + LO QUE PIDA LA NOCHE">4 TEMAS + LO QUE PIDA LA NOCHE</span>
       </div>
-      <ol class="tracklist">
+      <ol class="tracklist" data-lado="B">
         <li class="track"><span class="track__n">11</span><span class="track__info"><span class="track__title">La muralla</span><span class="track__artist">ENANITOS VERDES</span></span><span class="track__time">2:41</span></li>
         <li class="track"><span class="track__n">12</span><span class="track__info"><span class="track__title">Lunes por la madrugada</span><span class="track__artist">LOS ABUELOS DE LA NADA</span></span><span class="track__time">3:14</span></li>
         <li class="track"><span class="track__n">13</span><span class="track__info"><span class="track__title">Prófugos</span><span class="track__artist">SODA STEREO</span></span><span class="track__time">5:50</span></li>
         <li class="track"><span class="track__n">14</span><span class="track__info"><span class="track__title">Tirá para arriba</span><span class="track__artist">MIGUEL MATEOS</span></span><span class="track__time">5:00</span></li>
       </ol>
 
-      <a class="glass request" href="#contratar">
+      <form class="glass suggest" data-suggest hidden novalidate>
+        <div class="request__body">
+          <span class="request__title">¿Hay un tema que no puede faltar?</span>
+          <span class="request__sub">Sugerilo acá y le llega directo a la banda.</span>
+        </div>
+        <div class="suggest__fields">
+          <label class="label field">TEMA<input name="tema" type="text" maxlength="120" autocomplete="off" required></label>
+          <label class="label field">ARTISTA<input name="artista" type="text" maxlength="120" autocomplete="off"></label>
+          <label class="suggest__trap" aria-hidden="true">No completar<input name="web" type="text" tabindex="-1" autocomplete="off"></label>
+          <button class="submit suggest__btn" type="submit">ENVIAR →</button>
+        </div>
+        <p class="form-note" data-suggest-note aria-live="polite"></p>
+      </form>
+
+      <a class="glass request" data-suggest-fallback href="#contratar">
         <span class="request__body">
           <span class="request__title">¿Hay un tema que no puede faltar?</span>
           <span class="request__sub">Pedilo cuando nos contrates y lo sumamos al setlist.</span>

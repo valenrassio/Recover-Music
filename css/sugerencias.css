@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Recover Music — formulario "¿Hay un tema que no puede faltar?"
+   ========================================================================== */
+
+.suggest {
+  margin-top: 32px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.suggest__fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px 20px;
+}
+
+.suggest .submit { grid-column: auto; justify-self: stretch; height: 46px; padding: 0 24px; cursor: pointer; }
+.suggest .submit:disabled { opacity: .6; cursor: progress; }
+.suggest .form-note:empty { display: none; }
+
+/* Campo trampa para bots: fuera de la vista y del teclado */
+.suggest__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 640px) {
+  .suggest { padding: 22px 20px; }
+  .suggest__fields { grid-template-columns: 1fr; }
+  .suggest .submit { height: auto; min-height: 50px; }
+}
