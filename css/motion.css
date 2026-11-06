@@ -8,8 +8,6 @@
 @keyframes rmSweep  { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
 @keyframes rmAxis   { from { scale: 0 1; } to { scale: 1 1; } }
 @keyframes rmPulse  { 0%, 100% { scale: 1 1; } 12% { scale: 1 2.2; } }
-@keyframes rmBreath { 0%, 100% { scale: 1 1; } 12% { scale: 1 1.08; } 55% { scale: 1 .9; } }
-@keyframes rmRipple { from { -webkit-mask-position: 0 0; mask-position: 0 0; } to { -webkit-mask-position: -320px 0; mask-position: -320px 0; } }
 @keyframes rmPunch  { 0%, 100% { scale: 1; } 35% { scale: 1.035; } }
 @keyframes rmPhoto  { from { opacity: 0; scale: 1.06; } to { opacity: 1; scale: 1; } }
 @keyframes rmDrop   { from { opacity: 0; translate: 0 -14px; } to { opacity: 1; translate: 0 0; } }
@@ -30,13 +28,8 @@
   animation: rmRise .85s cubic-bezier(.34, 1.5, .64, 1) .2s both, rmSweep 1.1s cubic-bezier(.25, .7, .25, 1) .2s both;
 }
 .hero-title .stencil-bar { animation: rmAxis .8s cubic-bezier(.34, 1.4, .64, 1) both, rmPulse 1.2s ease-out 2.2s infinite; }
-.hero-title .stencil--accent {
-  -webkit-mask-image: linear-gradient(90deg, #000 0, rgba(0,0,0,.4) 80px, #000 160px, rgba(0,0,0,.7) 240px, #000 320px);
-  mask-image: linear-gradient(90deg, #000 0, rgba(0,0,0,.4) 80px, #000 160px, rgba(0,0,0,.7) 240px, #000 320px);
-  -webkit-mask-size: 320px 100%;
-  mask-size: 320px 100%;
-  animation: rmRise .8s cubic-bezier(.34, 1.5, .64, 1) .85s both, rmBreath 1.2s ease-in-out 2.2s infinite, rmRipple 3.2s linear infinite;
-}
+/* "MUSIC" solo anima la entrada; después queda quieto. */
+.hero-title .stencil--accent { animation: rmRise .8s cubic-bezier(.34, 1.5, .64, 1) .85s both; }
 .hero__aside { animation: rmFade .7s ease-out 1.1s both; }
 .hero__photo img { animation: rmPhoto 1.6s cubic-bezier(.2, .7, .2, 1) .6s both; }
 
