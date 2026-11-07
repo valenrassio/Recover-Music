@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/glass.css?v=2">
 <link rel="stylesheet" href="css/countdown.css?v=4">
 <link rel="stylesheet" href="css/sugerencias.css?v=5">
+<link rel="stylesheet" href="css/galeria.css?v=9">
 <script>document.documentElement.classList.add('js')</script>
 <script src="js/config.js?v=6" defer></script>
 <script src="js/menu.js?v=2" defer></script>
@@ -69,7 +70,10 @@
     </div>
   </div>
   <figure class="hero__photo">
-    <img src="banda.jpg" alt="Los integrantes de Recover Music juntos sobre el escenario de un bar">
+    <picture>
+      <source media="(max-width: 640px)" srcset="img/banda-vertical.jpg" width="853" height="1280">
+      <img src="img/banda-horizontal.jpg" width="1280" height="853" alt="Los integrantes de Recover Music posando juntos en estudio, con baquetas, guitarra y micrófono">
+    </picture>
     <figcaption class="glass glass--pill">LA BANDA COMPLETA · EN VIVO</figcaption>
   </figure>
 </section>
@@ -125,6 +129,21 @@
         <span class="goal__num">03</span>
         <p class="goal__text">Que la música siga propagándose: mantener viva la cultura musical en las viejas y nuevas generaciones.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="fotos" class="gallery-section" aria-labelledby="fotos-t">
+  <div class="container section">
+    <div class="section-head" data-reveal>
+      <h2 id="fotos-t" class="h2">La banda, de cerca.</h2>
+      <p class="section-head__text">Voces, guitarras, teclados y batería. Una formación que cambia de género sin perder la energía.</p>
+    </div>
+    <div class="gallery" data-stagger>
+      <figure class="gallery__item"><img src="img/voz-guitarra.jpg" width="608" height="1080" loading="lazy" alt="Cantante con micrófono y guitarrista con guitarra eléctrica, en una toma inclinada"></figure>
+      <figure class="gallery__item"><img src="img/bateria.jpg" width="720" height="1080" loading="lazy" alt="Retrato del baterista con anteojos oscuros y baquetas"></figure>
+      <figure class="gallery__item"><img src="img/trio.jpg" width="864" height="1080" loading="lazy" alt="Tres integrantes de la banda juntos, mirando a cámara"></figure>
+      <figure class="gallery__item"><img src="img/duo.jpg" width="720" height="1080" loading="lazy" alt="Dos integrantes de la banda: uno sentado sobre un cajón y otra de pie a su lado"></figure>
     </div>
   </div>
 </section>

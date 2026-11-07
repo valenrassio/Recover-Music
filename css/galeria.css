@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Recover Music — fotos (portada y galería)
+   ========================================================================== */
+
+/* Portada: la foto horizontal muestra a toda la banda; se encuadra un poco arriba para no cortar cabezas */
+.hero__photo picture { display: block; }
+.hero__photo img { object-position: 50% 30%; }
+
+/* --- Galería ------------------------------------------------------------- */
+
+.gallery-section { border-bottom: 1px solid var(--line); }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.gallery__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 2 / 3;
+  background: var(--panel);
+}
+/* Escalonadas: la 2.ª y la 4.ª bajan un poco para dar movimiento */
+.gallery__item:nth-child(even) { margin-top: 56px; }
+
+.gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale .6s cubic-bezier(.2, .7, .2, 1), filter .6s ease;
+  filter: contrast(1.05);
+}
+.gallery__item:hover img { scale: 1.05; filter: contrast(1.12); }
+
+/* Línea naranja que aparece abajo al pasar el mouse */
+.gallery__item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--accent);
+  scale: 0 1;
+  transform-origin: 0 50%;
+  transition: scale .5s cubic-bezier(.2, .7, .2, 1);
+}
+.gallery__item:hover::after { scale: 1 1; }
+
+/* Encuadres para que las caras queden dentro del recorte 2:3 */
+.gallery__item img[src*="trio"] { object-position: 50% 25%; }
+.gallery__item img[src*="voz-guitarra"] { object-position: 50% 40%; }
+
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Celular: tira que se desliza de costado con el dedo */
+@media (max-width: 640px) {
+  .hero__photo img { height: 118vw; object-position: 50% 78%; }
+
+  .gallery {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery__item { flex: 0 0 72%; scroll-snap-align: center; }
+  .gallery__item:nth-child(even) { margin-top: 0; }
+}
